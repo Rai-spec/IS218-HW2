@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IS218 HW2</title>
+    <link rel="stylesheet" href="style.css"
+</head>
+<body>
+<h1 style="text-align: center"> REGISTRATION FORM </h1>
+<form name="RegForm" onsubmit="return validationForm()" method="post">
+
+    <p>First Name: <br><input type="text" size=65 name="fname"> </p><br>
+    <p>Last name: <br><input type="text" size=65 name="lname">  </p><br>
+    <p>E-mail Address: <br><input type="text" size=65 name="email">  </p><br>
+    <p><input type="submit" value="Signup" name="Submit">
+        <input type="reset" value="Cancel" name="Reset">
+    </p>
+</form>
+<script>
+    function validationForm()
+    {
+        var firstname = document.forms["RegForm"]["fname"];
+        var lastname = document.forms["RegForm"]["lname"];
+        var email = document.forms["RegForm"]["email"];
+
+        if (firstname.value == "")
+        {
+            window.alert("Please enter your First name.");
+            firstname.focus();
+            return false;
+        }
+        function hasNumber(myString) {
+            return /\d/.test(myString);
+        }
+        if (hasNumber(firstname.value)) {
+            window.alert("Please enter your First name correctly .");
+            firstname.focus();
+            return false;
+        }
+
+        if (hasNumber(lastname.value)) {
+            window.alert("Please enter your Last name correctly .");
+            lastname.focus();
+            return false;
+        }
+
+        <!-- Check Last name field is empty.  -->
+        if (lastname.value == "")
+        {
+            <!-- If Last name field is empty then alert user by message.  -->
+            window.alert("Please enter your Last name.");
+            lastname.focus();
+            return false;
+        }
+
+        <!-- Check email field is empty.  -->
+        if (email.value == "")
+        {
+            <!-- If email field is empty then alert user by message.  -->
+            window.alert("Please enter a valid e-mail address.");
+            email.focus();
+            return false;
+        }
+
+        <!-- Check email field by @.  -->
+        if (email.value.indexOf("@", 0) < 0)
+        {
+            window.alert("Please enter a valid e-mail address.");
+            email.focus();
+            return false;
+        }
+
+        <!-- Check email field by .  -->
+        if (email.value.indexOf(".", 0) < 0)
+        {
+            window.alert("Please enter a valid e-mail address.");
+            email.focus();
+            return false;
+        }
+
+        return window.alert("Successfully registered");
+    }</script>
+</body>
+</html>
